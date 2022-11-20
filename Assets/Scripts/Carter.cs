@@ -13,16 +13,27 @@ public class Carter : Player
 
     protected override void Update()
     {
-        switch (carterState)
-        {
-            case PlayerState.Running:
-                animator.SetBool("isRunning", true);
-                break;
-            case PlayerState.Attacking:
-                animator.SetBool("isAttacking", true);
-                break; 
+        //switch (carterState)
+        //{
+        //    case PlayerState.Running:
+        //        animator.SetBool("isRunning", true);
+        //        break;
+        //    case PlayerState.Attacking:
+        //        animator.SetBool("isAttacking", true);
+        //        break; 
 
-        }
+        //}
+        
+        
+       
+
+        animator.SetBool("isRunning", isRunning);
+
+        //if (Input.GetButton("space"))
+        //{
+        //    animator.SetBool("isAttacking", true);
+        //}
+
         base.Update();
     }
 }

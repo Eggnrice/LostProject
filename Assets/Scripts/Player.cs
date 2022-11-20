@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     internal bool m_FacingRight;
     protected Animator animator;
     private bool isInvincible;
+    protected bool isRunning;
+    protected bool isAttacking;
 
     protected enum PlayerState
     {
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         currentLevel = 1f;
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
+        StartCoroutine(IsAttackingCoroutine());
     }
 
     // Update is called once per frame
@@ -46,14 +49,9 @@ public class Player : MonoBehaviour
             Flip();
         }
 
-        bool isRunning = inputX != 0 || inputY != 0;
+        isRunning = inputX != 0 || inputY != 0;
 
         animator.SetBool("isRunning", isRunning);
-
-        if (Input.GetButton("space"))
-        {
-            animator.SetBool("isAttacking", true);
-        }
     }
 
     internal virtual void Flip()
@@ -94,5 +92,13 @@ public class Player : MonoBehaviour
         //material.SetFloat("_Flash", 0);
         isInvincible = false;
     }
-
+    IEnumerator IsAttackingCoroutine()
+    {
+        while (true) { 
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(2f);
+        }
+    }
 }
