@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
    [SerializeField] float speed;
    [SerializeField] float maxHP;
+   [SerializeField] GameObject bulletPrefab;
+   [SerializeField] Transform firePoint;
 // [SerializeField] BaseWeapon[] weapons;
 
     internal int currentExp;
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
     private bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
+
 
     protected enum PlayerState
     {
@@ -100,5 +103,10 @@ public class Player : MonoBehaviour
         animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(2f);
         }
+    }
+
+    void Bullet()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }
