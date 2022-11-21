@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Carter : Player
 {
+    [SerializeField] Rigidbody2D rb;
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime; 
+
     PlayerState carterState = PlayerState.Idle;
     protected override void Start()
     {
-       
+        dashTime = startDashTime;
         base.Start();
     }
 
@@ -25,7 +30,23 @@ public class Carter : Player
         //}
         
         
-       
+      if (dashTime > 0 && Input.GetKeyDown(KeyCode.Space))
+        {
+            dashTime -= Time.deltaTime;
+            if (m_FacingRight == true)
+            {
+                rb.velocity = Vector2.right * dashSpeed;
+            }
+            else
+            {
+                rb.velocity = Vector2.left * dashSpeed;
+            }
+            if (dashTime <= 0)
+            {
+            dashTime = startDashTime;
+            rb.velocity = Vector2.zero;
+            }
+        }
 
         animator.SetBool("isRunning", isRunning);
 
