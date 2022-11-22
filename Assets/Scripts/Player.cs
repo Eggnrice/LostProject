@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   [SerializeField] float speed;
    [SerializeField] float maxHP;
    [SerializeField] GameObject bulletPrefab;
    [SerializeField] Transform firePoint;
@@ -18,6 +17,16 @@ public class Player : MonoBehaviour
     private bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
+    private Vector2 moveInput;
+    public Rigidbody2D rb;
+    private float activeMoveSpeed;
+    public float dashSpeed;
+    public float dashLength = 0.5f, dashCooldown = 1f;
+    private float dashCounter;
+    private float dashCooldownCounter;
+    public float moveSpeed;
+
+
 
 
     protected enum PlayerState
@@ -34,28 +43,58 @@ public class Player : MonoBehaviour
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
         StartCoroutine(IsAttackingCoroutine());
+        activeMoveSpeed = moveSpeed; 
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        float inputX = Input.GetAxisRaw("Horizontal");
-        float inputY = Input.GetAxisRaw("Vertical");
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
 
-        transform.position += new Vector3(inputX, inputY) * speed * Time.deltaTime;
-        if (inputX < 0 && !m_FacingRight)
+        moveInput.Normalize();
+        rb.velocity = moveInput * activeMoveSpeed ; 
+       // transform.position += new Vector3(inputX, inputY) * speed * Time.deltaTime;
+
+
+        if (moveInput.x < 0 && !m_FacingRight)
         {
             Flip();
         }
-        else if (inputX > 0 && m_FacingRight)
+        else if (moveInput.x > 0 && m_FacingRight)
         {
             Flip();
         }
 
-        isRunning = inputX != 0 || inputY != 0;
+        isRunning = moveInput.x != 0 || moveInput.y != 0;
 
         animator.SetBool("isRunning", isRunning);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dashCooldownCounter <= 0 && dashCounter <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+            }
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter<= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashCooldownCounter = dashCooldown;
+
+            }
+        }
+        if (dashCooldownCounter > 0)
+        {
+            dashCooldownCounter -= Time.deltaTime;
+        }
     }
+
 
     internal virtual void Flip()
     {
