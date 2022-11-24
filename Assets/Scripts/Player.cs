@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,8 +9,10 @@ public class Player : MonoBehaviour
    [SerializeField] float maxHP;
    [SerializeField] GameObject bulletPrefab;
    [SerializeField] Transform firePoint;
-// [SerializeField] BaseWeapon[] weapons;
+   [SerializeField] float speed;
 
+    // [SerializeField] BaseWeapon[] weapons;
+    public float teleportDistance;
     internal int currentExp;
     internal float currentHp;
     internal float currentLevel;
@@ -17,15 +21,9 @@ public class Player : MonoBehaviour
     private bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
-    private Vector2 moveInput;
-    public Rigidbody2D rb;
-    private float activeMoveSpeed;
-    public float dashSpeed;
-    public float dashLength = 0.5f, dashCooldown = 1f;
-    private float dashCounter;
-    private float dashCooldownCounter;
-    public float moveSpeed;
+    public int ratio; 
 
+    public static Action OnShot;
 
 
 
@@ -43,55 +41,31 @@ public class Player : MonoBehaviour
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
         StartCoroutine(IsAttackingCoroutine());
-        activeMoveSpeed = moveSpeed; 
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
 
-        moveInput.Normalize();
-        rb.velocity = moveInput * activeMoveSpeed ; 
-       // transform.position += new Vector3(inputX, inputY) * speed * Time.deltaTime;
-
-
-        if (moveInput.x < 0 && !m_FacingRight)
+        transform.position += new Vector3(inputX, inputY) * speed * Time.deltaTime;
+        if (inputX < 0 && !m_FacingRight)
         {
             Flip();
         }
-        else if (moveInput.x > 0 && m_FacingRight)
+        else if (inputX > 0 && m_FacingRight)
         {
             Flip();
         }
 
-        isRunning = moveInput.x != 0 || moveInput.y != 0;
+        bool isRunning = inputX != 0;
 
         animator.SetBool("isRunning", isRunning);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.F))
         {
-            if (dashCooldownCounter <= 0 && dashCounter <= 0)
-            {
-                activeMoveSpeed = dashSpeed;
-                dashCounter = dashLength;
-            }
-        }
-
-        if (dashCounter > 0)
-        {
-            dashCounter -= Time.deltaTime;
-            if (dashCounter<= 0)
-            {
-                activeMoveSpeed = moveSpeed;
-                dashCooldownCounter = dashCooldown;
-
-            }
-        }
-        if (dashCooldownCounter > 0)
-        {
-            dashCooldownCounter -= Time.deltaTime;
+            animator.SetTrigger("Dash");
         }
     }
 
@@ -136,16 +110,40 @@ public class Player : MonoBehaviour
     }
     IEnumerator IsAttackingCoroutine()
     {
-        while (true) { 
-        animator.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(2f);
-        animator.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(2f);
+        while (true)
+        {
+            int i;
+            for (i = 0; i < ratio; i++)
+            { 
+           //  if()
+             animator.SetTrigger("isAttacking");
+             yield return new WaitForSeconds(0.41f);
+            }
+             yield return new WaitForSeconds(5f);
+            
         }
     }
 
     void Bullet()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void Teleport()
+    {
+        if (m_FacingRight)
+        {
+            transform.position = new Vector2(transform.position.x + teleportDistance, transform.position.y);
+        }
+        else if(!m_FacingRight)
+        {
+            transform.position = new Vector2(transform.position.x - teleportDistance, transform.position.y);
+        }
+        
+    }
+
+    public void Shot ()
+    {
+        OnShot?.Invoke(); 
     }
 }

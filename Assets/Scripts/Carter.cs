@@ -44,7 +44,6 @@ public class Carter : Player
       //      }
       //  }
 
-        animator.SetBool("isRunning", isRunning);
 
         //if (Input.GetButton("space"))
         //{

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] public Transform target;
-    public int speed = 5;
+    [SerializeField] Transform target;
+    public float speed = 5;
     void Start()
     {
     }
