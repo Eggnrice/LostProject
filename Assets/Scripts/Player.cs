@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
     private bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
-    public int ratio; 
+    public int ratio;
+    private bool isDashing = false;
+
 
     public static Action OnShot;
 
@@ -115,10 +117,16 @@ public class Player : MonoBehaviour
             int i;
             for (i = 0; i < ratio; i++)
             { 
-           //  if()
-             animator.SetTrigger("isAttacking");
-             yield return new WaitForSeconds(0.41f);
+                if (isDashing == true)
+                {
+                    yield return new WaitForSeconds(0.350f);
+                    isDashing = false;
+                }
+             animator.SetBool("isAttacking", true);
+                yield return new WaitForSeconds(0.41f);
+
             }
+            animator.SetBool("isAttacking", false);
              yield return new WaitForSeconds(5f);
             
         }
@@ -131,19 +139,17 @@ public class Player : MonoBehaviour
 
     void Teleport()
     {
-        if (m_FacingRight)
+        isDashing = true;
+        if (!m_FacingRight)
         {
             transform.position = new Vector2(transform.position.x + teleportDistance, transform.position.y);
         }
-        else if(!m_FacingRight)
+        else if(m_FacingRight)
         {
             transform.position = new Vector2(transform.position.x - teleportDistance, transform.position.y);
         }
         
     }
 
-    public void Shot ()
-    {
-        OnShot?.Invoke(); 
-    }
+  
 }

@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float maxHp;
     [SerializeField] GameObject[] consumible;
+    [SerializeField] float damage;
 
     private Player player;
     protected float currentHP;
+    protected Animator animator;
 
     protected enum EnemyState
     {
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currentHP = maxHp;
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Update()
@@ -35,6 +38,8 @@ public class Enemy : MonoBehaviour
 
         int scaleX = direction.x > 0 ? 1 : -1;
         transform.localScale = new Vector3(scaleX, 1, 1);
+
+        
     }
 
     internal virtual void OnDamage(float playerDamage)
@@ -52,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
        if(player)
         {
-            player.OnDamage(1f);
+            player.OnDamage(damage);
         }
     }
 }
