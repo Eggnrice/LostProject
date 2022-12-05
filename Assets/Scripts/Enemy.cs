@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject[] consumible;
     [SerializeField] float damage;
 
-    private Player player;
-    protected float currentHP;
+    protected Player player;
+    public float currentHP;
     protected Animator animator;
 
     protected enum EnemyState
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         int scaleX = direction.x > 0 ? 1 : -1;
         transform.localScale = new Vector3(scaleX, 1, 1);
 
-        
+
     }
 
     internal virtual void OnDamage(float playerDamage)
@@ -52,12 +52,15 @@ public class Enemy : MonoBehaviour
             Instantiate(consumible[random], transform.position, Quaternion.identity);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter2D(Collider2D collision)
     {
+       Player player = collision.GetComponent<Player>();
        if(player)
-        {
+       {
             player.OnDamage(damage);
-        }
+
+       }
+
     }
 }
+

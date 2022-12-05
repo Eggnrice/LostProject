@@ -10,43 +10,36 @@ public class Player : MonoBehaviour
    [SerializeField] GameObject bulletPrefab;
    [SerializeField] Transform firePoint;
    [SerializeField] float speed;
+   //[SerializeField] SpriteRenderer spriteRenderer;
+
+   // Material material;
 
     // [SerializeField] BaseWeapon[] weapons;
     public float teleportDistance;
     internal int currentExp;
-    internal float currentHp;
+    public float currentHp;
     internal float currentLevel;
     internal bool m_FacingRight;
     protected Animator animator;
-    private bool isInvincible;
+    bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
     public int ratio;
     private bool isDashing = false;
 
-
-    public static Action OnShot;
-
-
-
-    protected enum PlayerState
-    {
-        Idle,
-        Running,
-        Attacking
-    }
-
-    protected virtual void Start()
+    internal virtual void Start()
     {
         currentHp = maxHP;
-        currentLevel = 1f;
+        currentLevel = 1;
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
         StartCoroutine(IsAttackingCoroutine());
+       // material = spriteRenderer.material;
+        
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    internal virtual void Update()
     {
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
@@ -65,7 +58,7 @@ public class Player : MonoBehaviour
 
         animator.SetBool("isRunning", isRunning);
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             animator.SetTrigger("Dash");
         }
@@ -78,36 +71,37 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    internal virtual void AddExp()
-    {
-        currentExp++;
-        if(currentLevel%2 == 0)
-        {
-            Time.timeScale = 0;
-            //Menu appears
-        }
-    }
+    //internal virtual void AddExp()
+    //{
+    //    currentExp++;
+    //    if(currentLevel%2 == 0)
+    //    {
+    //        Time.timeScale = 0;
+    //        //Menu appears
+    //    }
+    //}
 
-    internal virtual void OnDamage(float enemyDamage)
+    public void OnDamage(float enemyDamage)
     {
         if(!isInvincible)
         {
             currentHp -= enemyDamage;
-            StartCoroutine(InvincibleCoroutine());
 
+            StartCoroutine(InvincibleCoroutine());
             if (currentHp <= 0)
             {
                 Destroy(gameObject);
             }
         }
+
     }
     IEnumerator InvincibleCoroutine()
     {
-
+        Debug.Log("I got hit");
         isInvincible = true;
-        //material.SetFloat("_Flash", 0.33f);
-        yield return new WaitForSeconds(0.5f);
-        //material.SetFloat("_Flash", 0);
+       // material.SetFloat("_Flash", 0.33f);
+        yield return new WaitForSeconds(1f);
+       // material.SetFloat("_Flash", 0);
         isInvincible = false;
     }
     IEnumerator IsAttackingCoroutine()

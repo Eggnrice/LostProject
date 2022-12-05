@@ -31,16 +31,16 @@ public class Drone : MonoBehaviour
         var playerPosition = new Vector3(targetX, targetY, targetZ);
         transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
 
-        if (player.transform.rotation.y == 0f && m_FacingRight)
-        {
-            Flip();
-            Debug.Log("estoy leyendo esta huevonada");
-        }
-        if (player.transform.rotation.y == 180f && !m_FacingRight)
-        {
-            Flip();
-            Debug.Log("estoy leyendo la segunda huevonada");
-        }
+        //if (player.transform.rotation.y == 0f && m_FacingRight)
+        //{
+        //    Flip();
+        //    Debug.Log("estoy leyendo esta huevonada");
+        //}
+        //if (player.transform.rotation.y == 180f && !m_FacingRight)
+        //{
+        //    Flip();
+        //    Debug.Log("estoy leyendo la segunda huevonada");
+        //}
     }
 
     private void Flip()

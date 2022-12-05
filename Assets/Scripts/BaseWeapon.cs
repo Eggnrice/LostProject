@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
     [SerializeField] int level;
-    [SerializeField] float Damage;
+    public float Damage;
     [SerializeField] float speedOfAttack;
 
 

@@ -5,51 +5,6 @@ using UnityEngine;
 public class Carter : Player
 {
 
-    PlayerState carterState = PlayerState.Idle;
-    protected override void Start()
-    {
-        //dashTime = startDashTime;
-        base.Start();
-    }
 
-    protected override void Update()
-    {
-        //switch (carterState)
-        //{
-        //    case PlayerState.Running:
-        //        animator.SetBool("isRunning", true);
-        //        break;
-        //    case PlayerState.Attacking:
-        //        animator.SetBool("isAttacking", true);
-        //        break; 
-
-        //}
-        
-        
-      //if (dashTime > 0 && Input.GetKeyDown(KeyCode.Space))
-      //  {
-      //      dashTime -= Time.deltaTime;
-      //      if (m_FacingRight == true)
-      //      {
-      //          rb.velocity = Vector2.right * dashSpeed;
-      //      }
-      //      else
-      //      {
-      //          rb.velocity = Vector2.left * dashSpeed;
-      //      }
-      //      if (dashTime <= 0)
-      //      {
-      //      dashTime = startDashTime;
-      //      rb.velocity = Vector2.zero;
-      //      }
-      //  }
-
-
-        //if (Input.GetButton("space"))
-        //{
-        //    animator.SetBool("isAttacking", true);
-        //}
-
-        base.Update();
-    }
+ 
 }
