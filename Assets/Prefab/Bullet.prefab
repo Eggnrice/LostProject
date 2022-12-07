@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  Damage: 3
+  Damage: 5
   speedOfAttack: 0
   rb: {fileID: 3442545543049353415}
   bulletSpeed: 0.1

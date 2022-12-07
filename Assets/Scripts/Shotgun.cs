@@ -21,6 +21,7 @@ public class Shotgun : BaseWeapon
     {
         Player player = collision.GetComponent<Player>();
         Enemy enemy = collision.GetComponent<Enemy>();
+        BossHealth boss = collision.GetComponent<BossHealth>();
         if(player)
         {
             return;
@@ -28,6 +29,11 @@ public class Shotgun : BaseWeapon
         if (enemy)
         {
             enemy.OnDamage(Damage);
+            Destroy(gameObject);
+        }
+        if (boss)
+        {
+            boss.TakeDamage(Damage);
             Destroy(gameObject);
         }
     }
