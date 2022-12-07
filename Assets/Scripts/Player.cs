@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   [SerializeField] float maxHP;
+   public float maxHP;
    [SerializeField] GameObject bulletPrefab;
    [SerializeField] Transform firePoint;
    [SerializeField] float speed;
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     // [SerializeField] BaseWeapon[] weapons;
     public float teleportDistance;
-    internal int currentExp;
+    public int currentExp;
     public float currentHp;
     internal float currentLevel;
     internal bool m_FacingRight;
@@ -71,15 +71,15 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    //internal virtual void AddExp()
-    //{
-    //    currentExp++;
-    //    if(currentLevel%2 == 0)
-    //    {
-    //        Time.timeScale = 0;
-    //        //Menu appears
-    //    }
-    //}
+    internal virtual void AddExp()
+    {
+        currentExp++;
+        if (currentLevel % 2 == 0)
+        {
+            //Time.timeScale = 0;
+            //Menu appears
+        }
+    }
 
     public void OnDamage(float enemyDamage)
     {
