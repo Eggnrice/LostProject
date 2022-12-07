@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     protected bool isAttacking;
     public int ratio;
     private bool isDashing = false;
+    public HealthBar healthBar;
 
     internal virtual void Start()
     {
@@ -34,7 +35,8 @@ public class Player : MonoBehaviour
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
         StartCoroutine(IsAttackingCoroutine());
-       // material = spriteRenderer.material;
+        // material = spriteRenderer.material;
+        healthBar.SetMaxHealth(maxHP);
         
     }
 
@@ -86,6 +88,8 @@ public class Player : MonoBehaviour
         if(!isInvincible)
         {
             currentHp -= enemyDamage;
+
+            healthBar.SetHealth(currentHp);
 
             StartCoroutine(InvincibleCoroutine());
             if (currentHp <= 0)
