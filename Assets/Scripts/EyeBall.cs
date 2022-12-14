@@ -40,12 +40,7 @@ public class EyeBall : Enemy
                 }
                 break;
             case EnemyState.Attacking:
-                //if(isGettingHit == true)
-                //{
-                //    eyeBallState = EnemyState.Idle;
-                //    isGettingHit = false;
-                //    waitTimer = 5f;
-                //}
+                
                 animator.SetBool("isWalking", false);
                 animator.SetTrigger("Attack");
 

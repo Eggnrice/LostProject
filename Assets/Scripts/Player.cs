@@ -3,19 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-   public float maxHP;
-   [SerializeField] GameObject bulletPrefab;
-   [SerializeField] Transform firePoint;
-   [SerializeField] float speed;
-   //[SerializeField] SpriteRenderer spriteRenderer;
-
-   // Material material;
-
-    // [SerializeField] BaseWeapon[] weapons;
-    public float teleportDistance;
+    public float maxHP;
+  
+    [SerializeField] float speed;
+    public float expToLevelUp;
     public int currentExp;
     public float currentHp;
     internal float currentLevel;
@@ -24,9 +19,9 @@ public class Player : MonoBehaviour
     bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
-    public int ratio;
-    private bool isDashing = false;
+   // private bool isDashing = false;
     public HealthBar healthBar;
+    public ExpBar expBar;
 
     internal virtual void Start()
     {
@@ -34,13 +29,13 @@ public class Player : MonoBehaviour
         currentLevel = 1;
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
-        StartCoroutine(IsAttackingCoroutine());
+        //StartCoroutine(IsAttackingCoroutine());
         // material = spriteRenderer.material;
         healthBar.SetMaxHealth(maxHP);
+        expBar.SetMaxExp(expToLevelUp);
+        expBar.SetExp(currentExp);
         
     }
-
-    // Update is called once per frame
     internal virtual void Update()
     {
         float inputX = Input.GetAxisRaw("Horizontal");
@@ -58,15 +53,8 @@ public class Player : MonoBehaviour
 
         bool isRunning = inputX != 0;
 
-        animator.SetBool("isRunning", isRunning);
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            animator.SetTrigger("Dash");
-        }
+        animator.SetBool("isRunning", isRunning);  
     }
-
-
     internal virtual void Flip()
     {
         m_FacingRight = !m_FacingRight;
@@ -76,10 +64,13 @@ public class Player : MonoBehaviour
     internal virtual void AddExp()
     {
         currentExp++;
-        if (currentLevel % 2 == 0)
+        expBar.SetExp(currentExp);
+       if(currentExp == expToLevelUp)
         {
-            //Time.timeScale = 0;
-            //Menu appears
+            currentExp = 0;
+            expBar.SetExp(currentExp);
+            expToLevelUp += 2;
+            expBar.SetMaxExp(expToLevelUp);
         }
     }
 
@@ -95,6 +86,7 @@ public class Player : MonoBehaviour
             if (currentHp <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("Title");
             }
         }
 
@@ -108,46 +100,5 @@ public class Player : MonoBehaviour
        // material.SetFloat("_Flash", 0);
         isInvincible = false;
     }
-    IEnumerator IsAttackingCoroutine()
-    {
-        while (true)
-        {
-            int i;
-            for (i = 0; i < ratio; i++)
-            { 
-                if (isDashing == true)
-                {
-                    yield return new WaitForSeconds(0.350f);
-                    isDashing = false;
-                }
-             animator.SetBool("isAttacking", true);
-                yield return new WaitForSeconds(0.41f);
-
-            }
-            animator.SetBool("isAttacking", false);
-             yield return new WaitForSeconds(5f);
-            
-        }
-    }
-
-    void Bullet()
-    {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    }
-
-    void Teleport()
-    {
-        isDashing = true;
-        if (!m_FacingRight)
-        {
-            transform.position = new Vector2(transform.position.x + teleportDistance, transform.position.y);
-        }
-        else if(m_FacingRight)
-        {
-            transform.position = new Vector2(transform.position.x - teleportDistance, transform.position.y);
-        }
-        
-    }
-
   
 }

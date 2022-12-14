@@ -108,11 +108,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13
-        y: 83
+        y: 90
         width: 111
-        height: 15
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -120,6 +120,27 @@ TextureImporter:
       bones: []
       spriteID: a273211996e16794bbceece7ecc6f6b9
       internalID: 666593450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redblue (3)_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 83
+        width: 111
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f9cfce5f6175742937d7954ebf45bc
+      internalID: 599845162
       vertices: []
       indices: 
       edges: []
@@ -136,6 +157,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       redblue (3)_0: 666593450
+      redblue (3)_1: 599845162
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

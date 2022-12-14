@@ -76,10 +76,12 @@ public class TitleManager : MonoBehaviour
     public void OnStartButtonClick()
     {
         SceneManager.LoadScene("Game");
+        TimeController.instance.BeginTimer();
     }
     public void OnUpgradeButtonClick()
     {
         Debug.Log("To do next week");
+        Debug.Log(saveData.goldCoins);
     }
     public void OnQuitButtonClick()
     {

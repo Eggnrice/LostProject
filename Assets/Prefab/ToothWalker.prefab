@@ -11,6 +11,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToothWalker
       objectReference: {fileID: 0}
+    - target: {fileID: 817980081306072941, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4796114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4038703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.15330458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.22998488
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.5
@@ -37,11 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.01857
+      value: -5.441598
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38338363
+      value: 0.8202322
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83,6 +107,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 817980081306072941, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
   m_PrefabInstance: {fileID: 1839295465882844931}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2121137169
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359086497046268014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70101e01f1bd8fe4a9b30a038192af16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7382254882042647313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,8 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220077693a1ff6844a2469b9b2c652e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxHp: 1
+  speed: 2
+  maxHp: 10
   consumible: []
-  damage: 3
+  damage: 2
   currentHP: 0
+  isEnemyBit: 0
+  distanceToPlayer: 4

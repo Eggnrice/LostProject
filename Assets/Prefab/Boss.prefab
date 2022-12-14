@@ -16,13 +16,13 @@ GameObject:
   - component: {fileID: 5279788139408540408}
   - component: {fileID: 5279788139408540405}
   - component: {fileID: 5279788139408540410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5279788139408540414
 Transform:
   m_ObjectHideFlags: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  maxHealth: 0
   deathEffect: {fileID: 0}
   isInvulnerable: 0
 --- !u!114 &5279788139408540405
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babdc597882c77944a14af1379be9917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 20
+  attackDamage: 1
   enragedAttackDamage: 40
   attackPoint: {fileID: 5279788139924634200}
   attackOffset: {x: 0, y: 0, z: 0}

@@ -25,6 +25,19 @@ public class BossWeapon : MonoBehaviour
 			Debug.Log("I hit the player");
 		}
 	}
+	public void MuldAttack()
+	{
+		Vector3 pos = attackPoint.transform.position;
+		pos += transform.right * attackOffset.x;
+		pos += transform.up * attackOffset.y;
+
+		Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+		if (colInfo != null)
+		{
+			colInfo.GetComponent<Player>().OnDamage(attackDamage);
+			Debug.Log("I hit the player");
+		}
+	}
 
 	public void EnragedAttack()
 	{

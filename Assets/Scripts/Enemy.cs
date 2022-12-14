@@ -7,11 +7,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float maxHp;
     [SerializeField] GameObject[] consumible;
-    [SerializeField] float damage;
+    public float damage;
 
     protected Player player;
     public float currentHP;
     protected Animator animator;
+    public bool isEnemyBit;
 
     protected enum EnemyState
     {
@@ -58,8 +59,12 @@ public class Enemy : MonoBehaviour
        if(player)
        {
             player.OnDamage(damage);
+            if (isEnemyBit)
+            {
+                Destroy(gameObject);
+            }
 
-       }
+        }
 
     }
 }
