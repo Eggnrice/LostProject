@@ -6,7 +6,11 @@ public class Boss : MonoBehaviour
 {
     public Transform player;
 
-    public bool isFlipped = false;
+    private float damageInterval = 1f;
+    private float timeSinceLastDamage = 0f;
+    public float damage = 10f;
+
+    public bool isFlipped = true;
 
     public void Start()
     {
@@ -29,4 +33,28 @@ public class Boss : MonoBehaviour
             isFlipped = true;
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Player player = collision.GetComponent<Player>();
+
+        timeSinceLastDamage += Time.deltaTime;
+
+        if (timeSinceLastDamage >= damageInterval && player)
+        {
+            player.OnDamage(damage);
+            timeSinceLastDamage = 0f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player player = collision.GetComponent<Player>();
+        if (player)
+        {
+            player.OnDamage(damage);
+        }
+    }
+
+   
 }

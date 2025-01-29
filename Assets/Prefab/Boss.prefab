@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  damage: 10
   isFlipped: 0
 --- !u!114 &5279788139408540408
 MonoBehaviour:

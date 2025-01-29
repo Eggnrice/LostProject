@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 6532948804982567032, guid: d2eceaa91a5af304a9e3a076008aa479, type: 3}
   - {fileID: 1511851663611950668, guid: 21a1007e6e974bd4499ad44061030dea, type: 3}
   crystal: {fileID: 3982985404775620722, guid: 919cff0f4bd323940b2d7a3ef6f65860, type: 3}
+  cost: 1
   damage: 2
   attackPoint: {fileID: 170195739599817968}
   attackRange: 0.35

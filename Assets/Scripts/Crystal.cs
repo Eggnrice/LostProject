@@ -20,6 +20,7 @@ public class Crystal : MonoBehaviour
         if (player)
         {
             player.AddExp();
+            AudioSource.PlayClipAtPoint(experienceSound, transform.position);
             Destroy(gameObject);
         }
     }

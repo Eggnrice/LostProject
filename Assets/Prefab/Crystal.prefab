@@ -157,4 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2dec74cadb1034ba6f666630800899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experienceSound: {fileID: 0}
+  experienceSound: {fileID: 8300000, guid: 3c480d9c3db8a4748b69e509017da895, type: 3}

@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public ExpBar expBar;
 
     SpriteRenderer spriteRenderer;
-    Color spriteColor;
+    
 
     internal virtual void Start()
     {
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
-        spriteColor = spriteRenderer.color;
+       
         healthBar.SetMaxHealth(maxHP);
         expBar.SetMaxExp(expToLevelUp);
         expBar.SetExp(currentExp);
@@ -90,8 +90,7 @@ public class Player : MonoBehaviour
             StartCoroutine(InvincibleCoroutine());
             if (currentHp <= 0)
             {
-                Destroy(gameObject);
-                SceneManager.LoadScene("Title");
+                GameManager.Instance.EndGame();
             }
         }
 
@@ -100,9 +99,9 @@ public class Player : MonoBehaviour
     {
         Debug.Log("I got hit");
         isInvincible = true;
-        spriteColor = Color.red;
+        spriteRenderer.color = Color.black;
         yield return new WaitForSeconds(0.5f);
-        spriteColor = Color.white;
+        spriteRenderer.color = Color.white;
         isInvincible = false;
     }
   

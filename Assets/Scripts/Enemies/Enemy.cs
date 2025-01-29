@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHp;
     [SerializeField] GameObject[] consumible;
     [SerializeField] GameObject crystal;
+    [SerializeField] 
+    public int cost;
     public float damage;
 
     protected Player player;
@@ -66,7 +68,6 @@ public class Enemy : MonoBehaviour
        if(player)
        {
             player.OnDamage(damage);       
-
        }
 
     }

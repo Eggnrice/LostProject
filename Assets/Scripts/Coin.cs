@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.IO;
+using System;
 public class Coin : MonoBehaviour
 {
     [SerializeField] AudioClip coinSound;
@@ -18,9 +19,18 @@ public class Coin : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player)
         {
-            //AudioSource.PlayClipAtPoint(coinSound, transform.position);
+            AudioSource.PlayClipAtPoint(coinSound, transform.position);
+            try 
+            {
+                TitleManager.saveData.goldCoins++; 
+            }
+            catch (Exception e) 
+            {
+                Debug.Log(e);
+
+            }
+           
             Destroy(gameObject);
-            TitleManager.saveData.goldCoins++;
         }
     }
 
