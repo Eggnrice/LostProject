@@ -1147,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6922659137145128386, guid: 4ac7399e542bb01439df49e87d2d3bca, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6922659137145128386, guid: 4ac7399e542bb01439df49e87d2d3bca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1239,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6195241628607900741, guid: afde9579b2c94c743a73125dcf80ea29, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6195241628607900741, guid: afde9579b2c94c743a73125dcf80ea29, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1300,7 +1300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 170195741289123628, guid: ea8050bcfe64f954f9afcd1ace1fcb84, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 170195741289123628, guid: ea8050bcfe64f954f9afcd1ace1fcb84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130646086490750817, guid: 82339b573becd0349998c953e28d6451, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5130646086490750817, guid: 82339b573becd0349998c953e28d6451, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2111,7 +2111,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5499185279643444608, guid: e98c25151fc4e584fb440d772a3daeda, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5499185279643444608, guid: e98c25151fc4e584fb440d772a3daeda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2298,7 +2298,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6904456611208579889, guid: 74077be198672574ab86a9f7a9da5454, type: 3}
   firePoint: {fileID: 378524469}
   teleportDistance: 3
-  ratio: 1
+  ratio: 5
 --- !u!212 &1986860845
 SpriteRenderer:
   m_ObjectHideFlags: 0

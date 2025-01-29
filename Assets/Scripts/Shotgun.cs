@@ -6,10 +6,10 @@ public class Shotgun : BaseWeapon
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float bulletSpeed;
-    
+    [SerializeField] AudioClip audioClip;
     void Start()
     {
-        
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
     }
 
     void Update()
