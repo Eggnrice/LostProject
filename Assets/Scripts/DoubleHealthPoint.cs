@@ -19,7 +19,8 @@ public class DoubleHealthPoint : MonoBehaviour
                     player.currentHp = player.maxHP;
                 }
             }
-            //AudioSource.PlayClipAtPoint(eatingSound, transform.position);
+            player.healthBar.SetHealth(player.currentHp);
+            AudioSource.PlayClipAtPoint(eatingSound, transform.position);
             Destroy(gameObject);
         }
     }
