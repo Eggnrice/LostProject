@@ -8,12 +8,14 @@ public class Bitten : Enemy
 
     protected override void Update()
     {
-        waitTimer -= Time.deltaTime;
-        if (waitTimer <= 0)
-        {
-        
-            base.Update();
-
-        }
+        base.Update();
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        Destroy(gameObject);
+    }
+
 }

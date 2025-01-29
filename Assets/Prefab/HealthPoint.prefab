@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5499185279643444608}
   - component: {fileID: 5376447108451886826}
   - component: {fileID: 1214025295797516909}
+  - component: {fileID: 777714995}
+  - component: {fileID: 777714991}
   m_Layer: 0
   m_Name: HealthPoint
   m_TagString: Untagged
@@ -105,3 +107,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &777714995
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976159008693083237}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.125
+--- !u!114 &777714991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976159008693083237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2e4bdc87ebf4f44a98f8bec1542046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eatingSound: {fileID: 0}

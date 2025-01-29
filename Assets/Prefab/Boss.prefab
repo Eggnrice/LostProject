@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5279788139408540414
 Transform:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   maxHealth: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 3982985404775620722, guid: 919cff0f4bd323940b2d7a3ef6f65860, type: 3}
   isInvulnerable: 0
 --- !u!114 &5279788139408540405
 MonoBehaviour:

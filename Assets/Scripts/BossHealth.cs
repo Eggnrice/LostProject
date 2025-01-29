@@ -5,9 +5,7 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
 	public float health;
-
 	public float maxHealth;
-
 	public GameObject deathEffect;
 
 	public bool isInvulnerable = false;
@@ -37,7 +35,9 @@ public class BossHealth : MonoBehaviour
 
 	void Die()
 	{
-		//Instantiate(deathEffect, transform.position, Quaternion.identity);
+		Instantiate(deathEffect, transform.position, Quaternion.identity);
+		Instantiate(deathEffect, transform.position, Quaternion.identity);
+		Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 }

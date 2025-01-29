@@ -16,12 +16,16 @@ public class Player : MonoBehaviour
     internal float currentLevel;
     internal bool m_FacingRight;
     protected Animator animator;
+    
     bool isInvincible;
     protected bool isRunning;
     protected bool isAttacking;
-   // private bool isDashing = false;
+   
     public HealthBar healthBar;
     public ExpBar expBar;
+
+    SpriteRenderer spriteRenderer;
+    Color spriteColor;
 
     internal virtual void Start()
     {
@@ -29,8 +33,9 @@ public class Player : MonoBehaviour
         currentLevel = 1;
         // weapons[0].LevelUp();
         animator = GetComponent<Animator>();
-        //StartCoroutine(IsAttackingCoroutine());
-        // material = spriteRenderer.material;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        spriteColor = spriteRenderer.color;
         healthBar.SetMaxHealth(maxHP);
         expBar.SetMaxExp(expToLevelUp);
         expBar.SetExp(currentExp);
@@ -95,9 +100,9 @@ public class Player : MonoBehaviour
     {
         Debug.Log("I got hit");
         isInvincible = true;
-       // material.SetFloat("_Flash", 0.33f);
-        yield return new WaitForSeconds(1f);
-       // material.SetFloat("_Flash", 0);
+        spriteColor = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        spriteColor = Color.white;
         isInvincible = false;
     }
   

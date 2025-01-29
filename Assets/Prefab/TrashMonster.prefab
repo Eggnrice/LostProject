@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 817980081306072941, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2235468221416028919, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_Size.x
       value: 1.3975747
@@ -57,15 +61,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.87
+      value: -337.67
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -130.88
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.39302182
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -73,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -81,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8760702721508195009, guid: 5bb8a58e1515d1844b0bd45531bc0fa0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -137,7 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxHp: 10
-  consumible: []
+  consumible:
+  - {fileID: 6532948804982567032, guid: d2eceaa91a5af304a9e3a076008aa479, type: 3}
+  - {fileID: 1511851663611950668, guid: 21a1007e6e974bd4499ad44061030dea, type: 3}
+  - {fileID: 8976159008693083237, guid: e98c25151fc4e584fb440d772a3daeda, type: 3}
+  crystal: {fileID: 3982985404775620722, guid: 919cff0f4bd323940b2d7a3ef6f65860, type: 3}
   damage: 2
-  currentHP: 0
   distanceToPlayer: 2
