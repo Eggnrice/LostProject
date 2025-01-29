@@ -16,6 +16,7 @@ public class Bitten : Enemy
         base.OnTriggerEnter2D(collision);
 
         Destroy(gameObject);
+        
     }
 
 }

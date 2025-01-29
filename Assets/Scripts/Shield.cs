@@ -16,6 +16,7 @@ public class Shield : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         circleCollider2D.enabled = false;
+        shieldSound = GetComponent<AudioSource>();
         //progressionDamage = 0.25f;
         //maxDamage = 100;
         //amountDamage = 100;
@@ -37,9 +38,9 @@ public class Shield : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         circleCollider2D.enabled = true;
-        //shieldSound.Play();
+        shieldSound.Play();
         yield return new WaitForSeconds(3f);
-        //shieldSound.Pause();
+        shieldSound.Pause();
         spriteRenderer.enabled = false;
         circleCollider2D.enabled = false;
     }

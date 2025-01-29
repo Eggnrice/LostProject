@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float maxHP;
   
     [SerializeField] float speed;
+    [SerializeField] AudioClip audioClip;
     public float expToLevelUp;
     public int currentExp;
     public float currentHp;
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour
         Debug.Log("I got hit");
         isInvincible = true;
         spriteRenderer.color = Color.black;
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.color = Color.white;
         isInvincible = false;

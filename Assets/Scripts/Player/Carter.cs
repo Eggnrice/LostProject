@@ -6,6 +6,7 @@ public class Carter : Player
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
+   
     private bool isDashing = false;
     public float teleportDistance;
     public int ratio;
