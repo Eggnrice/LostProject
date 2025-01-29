@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
 {
-    public static TimeController instance;
+    public static TimeController Instance;
 
     public TMP_Text timeCounter;
     private TimeSpan timePlaying;
@@ -17,7 +17,7 @@ public class TimeController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     void Start()
     {
@@ -29,7 +29,7 @@ public class TimeController : MonoBehaviour
     {
         timerGoing = true;
         elapsedTime = 0f;
-
+        Debug.Log("Timer has started");
         StartCoroutine(UpdateTimer());
     }
 
@@ -47,7 +47,6 @@ public class TimeController : MonoBehaviour
             timeCounter.text = timePlayingStr;
 
             yield return null;
-
         }
     }
 

@@ -10,9 +10,11 @@ public class Enemy : MonoBehaviour
     public float damage;
 
     protected Player player;
-    public float currentHP;
+    protected float currentHP;
     protected Animator animator;
-    public bool isEnemyBit;
+    protected bool isEnemyBit;
+
+    
 
     protected enum EnemyState
     {
@@ -40,11 +42,10 @@ public class Enemy : MonoBehaviour
         int scaleX = direction.x > 0 ? 1 : -1;
         transform.localScale = new Vector3(scaleX, 1, 1);
 
-
     }
 
-    internal virtual void OnDamage(float playerDamage)
-    {
+     public virtual void OnDamage(float playerDamage)
+     {
         currentHP -= playerDamage;
         if (currentHP <= 0)
         {
@@ -52,8 +53,8 @@ public class Enemy : MonoBehaviour
             int random = UnityEngine.Random.Range(0, consumible.Length + 1);
             Instantiate(consumible[random], transform.position, Quaternion.identity);
         }
-    }
-     void OnTriggerEnter2D(Collider2D collision)
+     }
+    void OnTriggerEnter2D(Collider2D collision)
     {
        Player player = collision.GetComponent<Player>();
        if(player)

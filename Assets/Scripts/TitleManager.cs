@@ -16,15 +16,13 @@ public class TitleManager : MonoBehaviour
         if (saveData == null)
         {
             Load();
+            Debug.Log("SaveData is null");
         }
-
         else
         {
-
             Save();
+            Debug.Log("SaveData is not null");
         }
-
-
     }
 
     private void Save()
@@ -43,7 +41,6 @@ public class TitleManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.Log(e);
-
         }
         finally
         {
@@ -65,6 +62,7 @@ public class TitleManager : MonoBehaviour
         {
             Debug.Log(e.Message);
             saveData = new SaveData();
+            Debug.Log("new SaveData created");
         }
         finally
         {
@@ -75,8 +73,7 @@ public class TitleManager : MonoBehaviour
 
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene("Game");
-        TimeController.instance.BeginTimer();
+        SceneManager.LoadScene(1);
     }
     public void OnUpgradeButtonClick()
     {

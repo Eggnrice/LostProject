@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToothWalker : Enemy
 {
-     float waitTimer = 2f;
+    float waitTimer = 2f;
     [SerializeField] float distanceToPlayer;
     protected override void Start()
     {
