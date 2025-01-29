@@ -12,6 +12,7 @@ public class TimeController : MonoBehaviour
     public TMP_Text timeCounter;
     private TimeSpan timePlaying;
     private bool timerGoing;
+    private string timePlayingStr;
 
     private float elapsedTime;
 
@@ -21,8 +22,11 @@ public class TimeController : MonoBehaviour
     }
     void Start()
     {
+        if(timeCounter == null)
+        {
+            Debug.Log("Timer counter is null");
+        }
         timeCounter.text = "Time : 00:00:00";
-        timerGoing = false;
     }
 
     public void BeginTimer()
@@ -39,11 +43,11 @@ public class TimeController : MonoBehaviour
     }
     private IEnumerator UpdateTimer()
     {
-        while (timerGoing)
+        while(timerGoing)
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'fff");
+            timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'fff");
             timeCounter.text = timePlayingStr;
 
             yield return null;
